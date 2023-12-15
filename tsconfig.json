@@ -1,0 +1,62 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
+    "useDefineForClassFields": true,
+    "moduleResolution": "Node",
+    "strict": true,
+    "skipLibCheck": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "baseUrl": "./src",
+    "outDir": "dist",
+    "allowJs": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "paths": {
+      "@config/*": [
+        "config/*"
+      ],
+      "@controllers/*": [
+        "controllers/*"
+      ],
+      "@db/*": [
+        "db/*"
+      ],
+      "@docs/*": [
+        "docs/*"
+      ],
+      "@middlewares/*": [
+        "middlewares/*"
+      ],
+      "@models/*": [
+        "models/*"
+      ],
+      "@routes/*": [
+        "routes/*"
+      ],
+      "@server/*": [
+        "server/*"
+      ],
+    },
+  },
+  "exclude": [
+    "dist",
+    "coverage",
+    "node_modules"
+  ],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx"
+  ],
+  "ts-node": {
+    "require": [
+      "tsconfig-paths/register"
+    ]
+  }
+}

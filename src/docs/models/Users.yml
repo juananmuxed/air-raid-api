@@ -1,0 +1,41 @@
+components:
+  schemas:
+    Users:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        username:
+          type: string
+        email:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    NewUser:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/Users'
+        token:
+          type: string
+        refreshToken:
+          type: string
+    Login:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    RefreshToken:
+      type: object
+      properties:
+        token:
+          type: string
+        refreshToken:
+          type: string

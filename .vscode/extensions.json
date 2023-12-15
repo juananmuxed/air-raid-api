@@ -1,0 +1,19 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "editorconfig.editorconfig",
+    "mhutchie.git-graph",
+    "streetsidesoftware.code-spell-checker",
+    "stylelint.vscode-stylelint",
+    "wscats.vue",
+    "usernamehw.errorlens",
+    "seatonjiang.gitmoji-vscode",
+    "yoavbls.pretty-ts-errors",
+  ],
+  "unwantedRecommendations": [
+    "octref.vetur",
+    "sdras.vue-vscode-extensionpack",
+    "hookyqr.beautify",
+    "dbaeumer.jshint"
+  ]
+}

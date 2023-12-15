@@ -4,7 +4,7 @@ import { configDotenv } from 'dotenv';
 configDotenv();
 
 export const dbHost = process.env.DB_HOST || 'localhost';
-export const dbTable = process.env.DB_TABLE || 'template-ts';
+export const dbTable = process.env.DB_TABLE || 'air-raid';
 export const dbUser = process.env.DB_USER || 'root';
 export const dbPassword = process.env.DB_PASS || '';
 

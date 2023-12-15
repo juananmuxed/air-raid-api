@@ -1,7 +1,7 @@
 {
-  "name": "template-ts-api",
-  "version": "1.0.0",
-  "description": "Template for API with Node, Express & Sequelize",
+  "name": "air-raid-api",
+  "version": "0.1.0",
+  "description": "API REST for Air Raid board game",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon - exec 'ts-node' src/index.ts",
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/juananmuxed/template-ts-api.git"
+    "url": "git+https://github.com/juananmuxed/air-raid-api.git"
   },
   "keywords": [
     "typescript",
@@ -31,9 +31,9 @@
   "author": "MuXeD",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/juananmuxed/template-ts-api/issues"
+    "url": "https://github.com/juananmuxed/air-raid-api/issues"
   },
-  "homepage": "https://github.com/juananmuxed/template-ts-api#readme",
+  "homepage": "https://github.com/juananmuxed/air-raid-api#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",

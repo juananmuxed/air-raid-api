@@ -7,7 +7,7 @@ import {
 import { Authentication } from '@models/Authentication';
 import { UserItem, Users } from '@db/models/Users';
 import { TypedRequest } from '@db/models/common/ExpressTypes';
-import { Roles, RoleItem } from '@db/models/Roles';
+import { Roles } from '@db/models/Roles';
 import { ERRORS } from '@config/data/Errors';
 
 const authentication = new Authentication();

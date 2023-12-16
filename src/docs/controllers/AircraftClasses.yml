@@ -1,0 +1,150 @@
+paths:
+  /aircraftClasses/:
+    get:
+        tags:
+          - AircraftClasses
+        summary: Get aircraft classes
+        description: Use to get all active aircraft classes
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/AircraftClasses'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+    post:
+        tags:
+          - AircraftClasses
+        summary: Create new aircraft class
+        description: Use to create a aircraft class
+        consumes:
+          - application/json
+        parameters:
+          - in: body
+            name: aircraft class
+            description: The aircraft class to create
+            schema:
+              $ref: '#/components/schemas/AircraftClasses'
+        security:
+          - bearerAuth: []
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/AircraftClasses'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+          '500':
+            description: Internal error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InternalError'
+    put:
+        tags:
+          - AircraftClasses
+        summary: Update new aircraft class
+        description: Use to update a aircraft class
+        consumes:
+          - application/json
+        parameters:
+          - in: body
+            name: aircraft class
+            description: The aircraft class to create
+            schema:
+              $ref: '#/components/schemas/AircraftClasses'
+        security:
+          - bearerAuth: []
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/AircraftClasses'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+          '500':
+            description: Internal error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InternalError'
+    delete:
+        tags:
+          - AircraftClasses
+        summary: Delete aircraft class
+        description: Use to delete a aircraft class
+        consumes:
+          - application/json
+        parameters:
+          - in: body
+            name: aircraft class
+            description: The aircraft class to create
+            schema:
+              $ref: '#/components/schemas/AircraftClasses'
+        security:
+          - bearerAuth: []
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/AircraftClasses'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+          '500':
+            description: Internal error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InternalError'
+  /aircraftClasses/admin:
+    get:
+        tags:
+          - AircraftClasses
+        summary: Get aircraft classes paginated
+        description: Use to get all active aircraft classes paginated
+        parameters:
+          - $ref: '#/components/parameters/page'
+          - $ref: '#/components/parameters/rowsPerPage'
+          - $ref: '#/components/parameters/sortBy'
+          - $ref: '#/components/parameters/descending'
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/PagedAircraftClasses'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'

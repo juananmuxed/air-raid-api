@@ -1,6 +1,6 @@
 components:
   schemas:
-    Roles:
+    AircraftClasses:
       type: object
       properties:
         id:
@@ -8,7 +8,7 @@ components:
           example: 1
         name:
           type: string
-    PagedRoles:
+    PagedAircraftClasses:
       type: object
       properties:
         page:
@@ -20,7 +20,7 @@ components:
         rows:
           type: array
           items:
-            $ref: '#/components/schemas/Roles'
+            $ref: '#/components/schemas/AircraftClasses'
         sortBy:
           type: string
         descending:

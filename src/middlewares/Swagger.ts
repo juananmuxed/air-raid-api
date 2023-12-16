@@ -6,9 +6,9 @@ export const useSwaggerOptions = () => {
       openapi: '3.0.3',
       info: {
         version: '1.0.0',
-        title: 'Template TS API',
+        title: 'Air Raid API',
         termsOfService: 'http://swagger.io/terms/',
-        description: 'Template TS API',
+        description: 'Air Raid board game API',
         contact: {
           name: 'MuXeD',
           url: 'https://github.com/juananmuxed',
@@ -25,8 +25,8 @@ export const useSwaggerOptions = () => {
   };
   if (process.env.NODE_ENV === 'production' && swaggerOptions.definition) {
     swaggerOptions.definition.servers = [{
-      url: 'https://example.com/api',
-      description: 'Template TS API',
+      url: 'https://airraidapi.muxed.dev/api',
+      description: 'Air Raid board game API',
     }];
   }
   return swaggerOptions;

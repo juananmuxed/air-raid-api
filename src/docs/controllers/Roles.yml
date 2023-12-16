@@ -1,0 +1,150 @@
+paths:
+  /roles/:
+    get:
+        tags:
+          - Roles
+        summary: Get roles
+        description: Use to get all roles
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Roles'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+    post:
+        tags:
+          - Roles
+        summary: Create new role
+        description: Use to create a role
+        consumes:
+          - application/json
+        parameters:
+          - in: body
+            name: role
+            description: The role to create
+            schema:
+              $ref: '#/components/schemas/Roles'
+        security:
+          - bearerAuth: []
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Roles'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+          '500':
+            description: Internal error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InternalError'
+    put:
+        tags:
+          - Roles
+        summary: Update new role
+        description: Use to update a role
+        consumes:
+          - application/json
+        parameters:
+          - in: body
+            name: role
+            description: The role to create
+            schema:
+              $ref: '#/components/schemas/Roles'
+        security:
+          - bearerAuth: []
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Roles'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+          '500':
+            description: Internal error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InternalError'
+    delete:
+        tags:
+          - Roles
+        summary: Delete role
+        description: Use to delete a role
+        consumes:
+          - application/json
+        parameters:
+          - in: body
+            name: role
+            description: The role to create
+            schema:
+              $ref: '#/components/schemas/Roles'
+        security:
+          - bearerAuth: []
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Roles'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+          '500':
+            description: Internal error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InternalError'
+  /roles/admin:
+    get:
+        tags:
+          - Roles
+        summary: Get roles paginated
+        description: Use to get all roles paginated
+        parameters:
+          - $ref: '#/components/parameters/page'
+          - $ref: '#/components/parameters/rowsPerPage'
+          - $ref: '#/components/parameters/sortBy'
+          - $ref: '#/components/parameters/descending'
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/PagedRoles'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'

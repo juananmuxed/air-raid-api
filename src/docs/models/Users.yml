@@ -39,3 +39,20 @@ components:
           type: string
         refreshToken:
           type: string
+    PagedUsers:
+      type: object
+      properties:
+        page:
+          type: number
+        rowsPerPage:
+          type: number
+        rowsNumber:
+          type: number
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Users'
+        sortBy:
+          type: string
+        descending:
+          type: boolean

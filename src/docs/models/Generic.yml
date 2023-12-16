@@ -1,0 +1,32 @@
+components:
+  parameters:
+    page:
+      in: query
+      name: page
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+      description: Page of the pagination
+    rowsPerPage:
+      in: query
+      name: rowsPerPage
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+      description: The number of rows per page
+    sortBy:
+      in: query
+      name: sortBy
+      required: false
+      schema:
+        type: string
+      description: Sort order value
+    descending:
+      in: query
+      name: descending
+      required: false
+      schema:
+        type: boolean
+      description: Order

@@ -5,6 +5,8 @@ paths:
           - SpecialAbilities
         summary: Get special abilities
         description: Use to get all special abilities
+        security:
+          - bearerAuth: []
         responses:
           '200':
             description: Success

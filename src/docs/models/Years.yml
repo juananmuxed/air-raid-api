@@ -1,0 +1,28 @@
+components:
+  schemas:
+    Years:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        year:
+          type: number
+          example: 1978
+    PagedYears:
+      type: object
+      properties:
+        page:
+          type: number
+        rowsPerPage:
+          type: number
+        rowsNumber:
+          type: number
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Years'
+        sortBy:
+          type: string
+        descending:
+          type: boolean

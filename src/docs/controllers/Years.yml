@@ -1,12 +1,10 @@
 paths:
-  /aircraftClasses/:
+  /years/:
     get:
         tags:
-          - AircraftClasses
-        summary: Get aircraft classes
-        description: Use to get all active aircraft classes
-        security:
-          - bearerAuth: []
+          - Years
+        summary: Get years
+        description: Use to get all active years
         responses:
           '200':
             description: Success
@@ -15,7 +13,7 @@ paths:
                 schema:
                   type: array
                   items:
-                    $ref: '#/components/schemas/AircraftClasses'
+                    $ref: '#/components/schemas/Years'
           '400':
             description: An error has ocurred
             content:
@@ -24,17 +22,17 @@ paths:
                   $ref: '#/components/schemas/Error'
     post:
         tags:
-          - AircraftClasses
-        summary: Create new aircraft class
-        description: Use to create a aircraft class
+          - Years
+        summary: Create new year
+        description: Use to create a year
         consumes:
           - application/json
         parameters:
           - in: body
-            name: aircraft class
-            description: The aircraft class to create
+            name: year
+            description: The year to create
             schema:
-              $ref: '#/components/schemas/AircraftClasses'
+              $ref: '#/components/schemas/Years'
         security:
           - bearerAuth: []
         responses:
@@ -43,7 +41,7 @@ paths:
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/AircraftClasses'
+                  $ref: '#/components/schemas/Years'
           '400':
             description: An error has ocurred
             content:
@@ -58,17 +56,17 @@ paths:
                   $ref: '#/components/schemas/InternalError'
     put:
         tags:
-          - AircraftClasses
-        summary: Update new aircraft class
-        description: Use to update a aircraft class
+          - Years
+        summary: Update new year
+        description: Use to update a year
         consumes:
           - application/json
         parameters:
           - in: body
-            name: aircraft class
-            description: The aircraft class to create
+            name: year
+            description: The year to create
             schema:
-              $ref: '#/components/schemas/AircraftClasses'
+              $ref: '#/components/schemas/Years'
         security:
           - bearerAuth: []
         responses:
@@ -77,7 +75,7 @@ paths:
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/AircraftClasses'
+                  $ref: '#/components/schemas/Years'
           '400':
             description: An error has ocurred
             content:
@@ -92,17 +90,17 @@ paths:
                   $ref: '#/components/schemas/InternalError'
     delete:
         tags:
-          - AircraftClasses
-        summary: Delete aircraft class
-        description: Use to delete a aircraft class
+          - Years
+        summary: Delete year
+        description: Use to delete a year
         consumes:
           - application/json
         parameters:
           - in: body
-            name: aircraft class
-            description: The aircraft class to create
+            name: year
+            description: The year to create
             schema:
-              $ref: '#/components/schemas/AircraftClasses'
+              $ref: '#/components/schemas/Years'
         security:
           - bearerAuth: []
         responses:
@@ -111,7 +109,7 @@ paths:
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/AircraftClasses'
+                  $ref: '#/components/schemas/Years'
           '400':
             description: An error has ocurred
             content:
@@ -124,12 +122,12 @@ paths:
               application/json:
                 schema:
                   $ref: '#/components/schemas/InternalError'
-  /aircraftClasses/admin:
+  /years/admin:
     get:
         tags:
-          - AircraftClasses
-        summary: Get aircraft classes paginated
-        description: Use to get all active aircraft classes paginated
+          - Years
+        summary: Get years paginated
+        description: Use to get all active years paginated
         parameters:
           - $ref: '#/components/parameters/page'
           - $ref: '#/components/parameters/rowsPerPage'
@@ -143,7 +141,7 @@ paths:
                 schema:
                   type: array
                   items:
-                    $ref: '#/components/schemas/PagedAircraftClasses'
+                    $ref: '#/components/schemas/PagedYears'
           '400':
             description: An error has ocurred
             content:

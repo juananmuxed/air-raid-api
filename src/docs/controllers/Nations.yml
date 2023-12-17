@@ -128,6 +128,8 @@ paths:
           - Nations
         summary: Get nations paginated
         description: Use to get all active nations paginated
+        security:
+          - bearerAuth: []
         parameters:
           - $ref: '#/components/parameters/page'
           - $ref: '#/components/parameters/rowsPerPage'
@@ -142,6 +144,42 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/PagedNations'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+  /nations/bulk:
+    post:
+        tags:
+          - Nations
+        summary: Post many nations
+        description: Post a CSV file to massive creation of nations
+        security:
+          - bearerAuth: []
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  file:
+                    required: true
+                    type: string
+                    format: base64
+              encoding:
+                file:
+                  contentType: text/csv, application/vnd.ms-excel
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Nations'
           '400':
             description: An error has ocurred
             content:

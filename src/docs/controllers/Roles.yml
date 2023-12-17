@@ -128,6 +128,8 @@ paths:
           - Roles
         summary: Get roles paginated
         description: Use to get all roles paginated
+        security:
+          - bearerAuth: []
         parameters:
           - $ref: '#/components/parameters/page'
           - $ref: '#/components/parameters/rowsPerPage'

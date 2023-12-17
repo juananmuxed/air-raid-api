@@ -130,6 +130,8 @@ paths:
           - AircraftClasses
         summary: Get aircraft classes paginated
         description: Use to get all active aircraft classes paginated
+        security:
+          - bearerAuth: []
         parameters:
           - $ref: '#/components/parameters/page'
           - $ref: '#/components/parameters/rowsPerPage'
@@ -144,6 +146,42 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/PagedAircraftClasses'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+  /aircraftClasses/bulk:
+    post:
+        tags:
+          - AircraftClasses
+        summary: Post many aircraft classes
+        description: Post a CSV file to massive creation of aircraft classes
+        security:
+          - bearerAuth: []
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  file:
+                    required: true
+                    type: string
+                    format: base64
+              encoding:
+                file:
+                  contentType: text/csv, application/vnd.ms-excel
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/AircraftClasses'
           '400':
             description: An error has ocurred
             content:

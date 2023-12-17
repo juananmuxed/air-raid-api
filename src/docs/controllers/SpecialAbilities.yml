@@ -1,0 +1,188 @@
+paths:
+  /specialAbilities/:
+    get:
+        tags:
+          - SpecialAbilities
+        summary: Get special abilities
+        description: Use to get all special abilities
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/SpecialAbilities'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+    post:
+        tags:
+          - SpecialAbilities
+        summary: Create new special ability
+        description: Use to create a special ability
+        consumes:
+          - application/json
+        parameters:
+          - in: body
+            name: special ability
+            description: The special ability to create
+            schema:
+              $ref: '#/components/schemas/SpecialAbilities'
+        security:
+          - bearerAuth: []
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/SpecialAbilities'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+          '500':
+            description: Internal error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InternalError'
+    put:
+        tags:
+          - SpecialAbilities
+        summary: Update new special ability
+        description: Use to update a special ability
+        consumes:
+          - application/json
+        parameters:
+          - in: body
+            name: special ability
+            description: The special ability to create
+            schema:
+              $ref: '#/components/schemas/SpecialAbilities'
+        security:
+          - bearerAuth: []
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/SpecialAbilities'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+          '500':
+            description: Internal error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InternalError'
+    delete:
+        tags:
+          - SpecialAbilities
+        summary: Delete special ability
+        description: Use to delete a special ability
+        consumes:
+          - application/json
+        parameters:
+          - in: body
+            name: special ability
+            description: The special ability to create
+            schema:
+              $ref: '#/components/schemas/SpecialAbilities'
+        security:
+          - bearerAuth: []
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/SpecialAbilities'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+          '500':
+            description: Internal error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InternalError'
+  /specialAbilities/admin:
+    get:
+        tags:
+          - SpecialAbilities
+        summary: Get special abilities paginated
+        description: Use to get all active special abilities paginated
+        security:
+          - bearerAuth: []
+        parameters:
+          - $ref: '#/components/parameters/page'
+          - $ref: '#/components/parameters/rowsPerPage'
+          - $ref: '#/components/parameters/sortBy'
+          - $ref: '#/components/parameters/descending'
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/PagedSpecialAbilities'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+  /specialAbilities/bulk:
+    post:
+        tags:
+          - SpecialAbilities
+        summary: Post many special abilities
+        description: Post a CSV file to massive creation of special abilities
+        security:
+          - bearerAuth: []
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  file:
+                    required: true
+                    type: string
+                    format: base64
+              encoding:
+                file:
+                  contentType: text/csv, application/vnd.ms-excel
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/SpecialAbilities'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'

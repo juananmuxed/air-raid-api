@@ -1,0 +1,29 @@
+components:
+  schemas:
+    SpecialAbilities:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        name:
+          type: string
+        imgUrl:
+          type: string
+    PagedSpecialAbilities:
+      type: object
+      properties:
+        page:
+          type: number
+        rowsPerPage:
+          type: number
+        rowsNumber:
+          type: number
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpecialAbilities'
+        sortBy:
+          type: string
+        descending:
+          type: boolean

@@ -18,7 +18,7 @@
 
 > *Fight on and fly on to the last drop of blood and the last drop of fuel, to the last beat of the heart.* <br> - Manfred von Richthofen, The Red Baron
 
-This is a simple template API REST to get data from board game Air Raid.
+This is a simple API REST to get, edit, create & delete data from board game Air Raid.
 
 ## ☕️ Buy Me a Coffee
 

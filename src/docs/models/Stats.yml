@@ -1,0 +1,51 @@
+components:
+  schemas:
+    Stats:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        speedMinRegular:
+          type: number;
+        speedMaxRegular:
+          type: number;
+        speedMinMaximum:
+          type: number;
+        speedMaxMaximum:
+          type: number;
+        agilityRegular:
+          type: number;
+        agilityMaximum:
+          type: number;
+        firepower:
+          type: string;
+        maneuverRookieRegular:
+          type: number;
+        maneuverRookieMaximum:
+          type: number;
+        maneuverRegularRegular:
+          type: number;
+        maneuverRegularMaximum:
+          type: number;
+        maneuverVeteranRegular:
+          type: number;
+        maneuverVeteranMaximum:
+          type: number;
+    PagedStats:
+      type: object
+      properties:
+        page:
+          type: number
+        rowsPerPage:
+          type: number
+        rowsNumber:
+          type: number
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Stats'
+        sortBy:
+          type: string
+        descending:
+          type: boolean

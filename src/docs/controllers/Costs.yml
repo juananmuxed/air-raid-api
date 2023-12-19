@@ -1,0 +1,188 @@
+paths:
+  /costs/:
+    get:
+        tags:
+          - Costs
+        summary: Get costs
+        description: Use to get all active costs
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Costs'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+    post:
+        tags:
+          - Costs
+        summary: Create new cost
+        description: Use to create a cost
+        consumes:
+          - application/json
+        parameters:
+          - in: body
+            name: cost
+            description: The cost to create
+            schema:
+              $ref: '#/components/schemas/Costs'
+        security:
+          - bearerAuth: []
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Costs'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+          '500':
+            description: Internal error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InternalError'
+    put:
+        tags:
+          - Costs
+        summary: Update new cost
+        description: Use to update a cost
+        consumes:
+          - application/json
+        parameters:
+          - in: body
+            name: cost
+            description: The cost to create
+            schema:
+              $ref: '#/components/schemas/Costs'
+        security:
+          - bearerAuth: []
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Costs'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+          '500':
+            description: Internal error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InternalError'
+    delete:
+        tags:
+          - Costs
+        summary: Delete cost
+        description: Use to delete a cost
+        consumes:
+          - application/json
+        parameters:
+          - in: body
+            name: cost
+            description: The cost to create
+            schema:
+              $ref: '#/components/schemas/Costs'
+        security:
+          - bearerAuth: []
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Costs'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+          '500':
+            description: Internal error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InternalError'
+  /costs/admin:
+    get:
+        tags:
+          - Costs
+        summary: Get costs paginated
+        description: Use to get all active costs paginated
+        security:
+          - bearerAuth: []
+        parameters:
+          - $ref: '#/components/parameters/page'
+          - $ref: '#/components/parameters/rowsPerPage'
+          - $ref: '#/components/parameters/sortBy'
+          - $ref: '#/components/parameters/descending'
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/PagedCosts'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+  /costs/bulk:
+    post:
+        tags:
+          - Costs
+        summary: Post many costs
+        description: Post a CSV file to massive creation of costs
+        security:
+          - bearerAuth: []
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  file:
+                    required: true
+                    type: string
+                    format: base64
+              encoding:
+                file:
+                  contentType: text/csv, application/vnd.ms-excel
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Costs'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'

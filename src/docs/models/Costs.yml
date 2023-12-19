@@ -1,0 +1,31 @@
+components:
+  schemas:
+    Costs:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        rookie:
+          type: number
+        rookie:
+          type: number
+        veteran:
+          type: number
+    PagedCosts:
+      type: object
+      properties:
+        page:
+          type: number
+        rowsPerPage:
+          type: number
+        rowsNumber:
+          type: number
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Costs'
+        sortBy:
+          type: string
+        descending:
+          type: boolean

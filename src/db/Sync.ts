@@ -4,6 +4,8 @@ import { AircraftClasses } from '@db/models/AircraftClasses';
 import { Years } from '@db/models/Years';
 import { Nations } from './models/Nations';
 import { SpecialAbilities } from './models/SpecialAbilities';
+import { Costs } from './models/Costs';
+import { Stats } from './models/Stats';
 
 export const syncDatabase = async () => {
   await Roles.sync();
@@ -12,4 +14,6 @@ export const syncDatabase = async () => {
   await Years.sync();
   await Nations.sync();
   await SpecialAbilities.sync();
+  await Costs.sync();
+  await Stats.sync();
 };

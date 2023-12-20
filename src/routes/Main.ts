@@ -7,6 +7,7 @@ import yearsRoutes from '@routes/manufacturers/Years';
 import nationsRoutes from '@routes/manufacturers/Nations';
 import costsRoutes from '@routes/aircraft/Costs';
 import statsRoutes from '@routes/aircraft/Stats';
+import planesRoutes from '@routes/aircraft/Planes';
 import specialAbilitiesRoutes from '@routes/specialAbilities/SpecialAbilities';
 import authenticationRoutes from '@routes/auth/Auth';
 
@@ -20,6 +21,7 @@ const Paths = [
   'stats',
   'specialAbilities',
   'aircraftClasses',
+  'planes',
   'authentication',
 ] as const;
 
@@ -36,6 +38,7 @@ export const apiPaths: Record<ApiPaths, string> = {
   stats: `${rootPath}stats`,
   specialAbilities: `${rootPath}specialAbilities`,
   aircraftClasses: `${rootPath}aircraftClasses`,
+  planes: `${rootPath}planes`,
   authentication: `${rootPath}auth`,
 };
 
@@ -49,4 +52,5 @@ export const setRoutes = (app: Application) => {
   app.use(apiPaths.stats, statsRoutes);
   app.use(apiPaths.specialAbilities, specialAbilitiesRoutes);
   app.use(apiPaths.aircraftClasses, aircraftClassesRoutes);
+  app.use(apiPaths.planes, planesRoutes);
 };

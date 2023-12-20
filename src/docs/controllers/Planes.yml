@@ -1,0 +1,188 @@
+paths:
+  /planes/:
+    get:
+        tags:
+          - Planes
+        summary: Get planes
+        description: Use to get all active planes
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Planes'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+    post:
+        tags:
+          - Planes
+        summary: Create new plane
+        description: Use to create a plane
+        consumes:
+          - application/json
+        parameters:
+          - in: body
+            name: plane
+            description: The plane to create
+            schema:
+              $ref: '#/components/schemas/Planes'
+        security:
+          - bearerAuth: []
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Planes'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+          '500':
+            description: Internal error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InternalError'
+    put:
+        tags:
+          - Planes
+        summary: Update new plane
+        description: Use to update a plane
+        consumes:
+          - application/json
+        parameters:
+          - in: body
+            name: plane
+            description: The plane to create
+            schema:
+              $ref: '#/components/schemas/Planes'
+        security:
+          - bearerAuth: []
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Planes'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+          '500':
+            description: Internal error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InternalError'
+    delete:
+        tags:
+          - Planes
+        summary: Delete plane
+        description: Use to delete a plane
+        consumes:
+          - application/json
+        parameters:
+          - in: body
+            name: plane
+            description: The plane to create
+            schema:
+              $ref: '#/components/schemas/Planes'
+        security:
+          - bearerAuth: []
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Planes'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+          '500':
+            description: Internal error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InternalError'
+  /planes/admin:
+    get:
+        tags:
+          - Planes
+        summary: Get planes paginated
+        description: Use to get all active planes paginated
+        security:
+          - bearerAuth: []
+        parameters:
+          - $ref: '#/components/parameters/page'
+          - $ref: '#/components/parameters/rowsPerPage'
+          - $ref: '#/components/parameters/sortBy'
+          - $ref: '#/components/parameters/descending'
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/PagedPlanes'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+  /planes/bulk:
+    post:
+        tags:
+          - Planes
+        summary: Post many planes
+        description: Post a CSV file to massive creation of planes
+        security:
+          - bearerAuth: []
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  file:
+                    required: true
+                    type: string
+                    format: base64
+              encoding:
+                file:
+                  contentType: text/csv, application/vnd.ms-excel
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Planes'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'

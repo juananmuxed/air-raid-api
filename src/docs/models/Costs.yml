@@ -8,7 +8,7 @@ components:
           example: 1
         rookie:
           type: number
-        rookie:
+        regular:
           type: number
         veteran:
           type: number

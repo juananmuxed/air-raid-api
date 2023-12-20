@@ -6,6 +6,9 @@ import { Nations } from './models/Nations';
 import { SpecialAbilities } from './models/SpecialAbilities';
 import { Costs } from './models/Costs';
 import { Stats } from './models/Stats';
+import {
+  Planes, PlanesSpecialAbilities, PlanesSpecialAbilitiesVeteran, PlanesYears,
+} from './models/Planes';
 
 export const syncDatabase = async () => {
   await Roles.sync();
@@ -16,4 +19,8 @@ export const syncDatabase = async () => {
   await SpecialAbilities.sync();
   await Costs.sync();
   await Stats.sync();
+  await Planes.sync();
+  await PlanesYears.sync();
+  await PlanesSpecialAbilities.sync();
+  await PlanesSpecialAbilitiesVeteran.sync();
 };

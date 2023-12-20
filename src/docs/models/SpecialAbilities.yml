@@ -8,7 +8,9 @@ components:
           example: 1
         name:
           type: string
-        imgUrl:
+        valueNumber:
+          type: number
+        valueString:
           type: string
     PagedSpecialAbilities:
       type: object

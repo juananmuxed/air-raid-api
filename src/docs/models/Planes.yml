@@ -1,0 +1,69 @@
+components:
+  schemas:
+    Planes:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        destination:
+          type: string
+        nickname:
+          type: string
+        nationId:
+          type: number
+        costId:
+          type: number
+        aircraftClassId:
+          type: number
+        statZeroId:
+          type: number
+        statOneId:
+          type: number
+        statTwoId:
+          type: number
+        statThreeId:
+          type: number
+        nation:
+          $ref: '#/components/schemas/Nations'
+        cost:
+          $ref: '#/components/schemas/Costs'
+        class:
+          $ref: '#/components/schemas/AircraftClasses'
+        statZero:
+          $ref: '#/components/schemas/Stats'
+        statOne:
+          $ref: '#/components/schemas/Stats'
+        statTwo:
+          $ref: '#/components/schemas/Stats'
+        statThree:
+          $ref: '#/components/schemas/Stats'
+        years:
+          type: array
+          items:
+            $ref: '#/components/schemas/Years'
+        specialAbilities:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpecialAbilities'
+        specialAbilitiesVeteran:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpecialAbilities'
+    PagedPlanes:
+      type: object
+      properties:
+        page:
+          type: number
+        rowsPerPage:
+          type: number
+        rowsNumber:
+          type: number
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Planes'
+        sortBy:
+          type: string
+        descending:
+          type: boolean

@@ -7,31 +7,31 @@ components:
           type: number
           example: 1
         speedMinRegular:
-          type: number;
+          type: number
         speedMaxRegular:
-          type: number;
+          type: number
         speedMinMaximum:
-          type: number;
+          type: number
         speedMaxMaximum:
-          type: number;
+          type: number
         agilityRegular:
-          type: number;
+          type: number
         agilityMaximum:
-          type: number;
+          type: number
         firepower:
-          type: string;
+          type: string
         maneuverRookieRegular:
-          type: number;
+          type: number
         maneuverRookieMaximum:
-          type: number;
+          type: number
         maneuverRegularRegular:
-          type: number;
+          type: number
         maneuverRegularMaximum:
-          type: number;
+          type: number
         maneuverVeteranRegular:
-          type: number;
+          type: number
         maneuverVeteranMaximum:
-          type: number;
+          type: number
     PagedStats:
       type: object
       properties:

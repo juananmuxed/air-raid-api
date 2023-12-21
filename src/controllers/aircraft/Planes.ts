@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { ValidationError } from 'sequelize';
 
-import { Years } from '@db/models/Years';
 import { SpecialAbilities } from '@db/models/SpecialAbilities';
 import { Nations } from '@db/models/Nations';
 import { Costs } from '@db/models/Costs';
@@ -15,13 +14,9 @@ import { getOrder, getPagination, pagedResponse } from '@controllers/utils/Pagin
 import { MIME_TYPES } from '@config/data/MimeTypes';
 import { ERRORS } from '@config/data/Errors';
 import { convertCsv } from '@controllers/utils/ConvertCsv';
+import { NationYears } from '@db/models/NationYears';
 
 const include = [
-  {
-    model: Nations,
-    as: 'nation',
-    required: false,
-  },
   {
     model: Costs,
     as: 'cost',
@@ -53,14 +48,6 @@ const include = [
     required: false,
   },
   {
-    model: Years,
-    as: 'years',
-    required: false,
-    through: {
-      attributes: [],
-    },
-  },
-  {
     model: SpecialAbilities,
     as: 'specialAbilities',
     required: false,
@@ -76,6 +63,14 @@ const include = [
       attributes: [],
     },
   },
+  {
+    model: NationYears,
+    as: 'nationYears',
+    required: false,
+    through: {
+      attributes: [],
+    },
+  },
 ];
 
 export { include as includePlanes };
@@ -86,7 +81,6 @@ export class PlanesController {
   }
 
   private async setIncludes(item: PlaneItem, plane?: PlaneModel) {
-    if (item.years) await plane?.setYears(item.years);
     if (item.specialAbilities) await plane?.setSpecialAbilities(item.specialAbilities);
     if (item.specialAbilitiesVeteran) await plane?.setSpecialAbilitiesVeteran(item.specialAbilitiesVeteran);
   }
@@ -99,6 +93,7 @@ export class PlanesController {
 
       res.json(planes);
     } catch (error) {
+      console.log(error);
       next(new InternalError(undefined, error as ValidationError));
     }
   };

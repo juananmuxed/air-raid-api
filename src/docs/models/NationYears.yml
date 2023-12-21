@@ -1,0 +1,33 @@
+components:
+  schemas:
+    NationYears:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        nationId:
+          type: number
+        nation:
+          $ref: '#/components/schemas/Nations'
+        years:
+          type: array
+          items:
+            $ref: '#/components/schemas/Years'
+    PagedNationYears:
+      type: object
+      properties:
+        page:
+          type: number
+        rowsPerPage:
+          type: number
+        rowsNumber:
+          type: number
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/NationYears'
+        sortBy:
+          type: string
+        descending:
+          type: boolean

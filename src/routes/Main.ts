@@ -5,6 +5,7 @@ import usersRoutes from '@routes/users/Users';
 import rolesRoutes from '@routes/users/Roles';
 import yearsRoutes from '@routes/manufacturers/Years';
 import nationsRoutes from '@routes/manufacturers/Nations';
+import nationYearsRoutes from '@routes/manufacturers/NationYears';
 import costsRoutes from '@routes/aircraft/Costs';
 import statsRoutes from '@routes/aircraft/Stats';
 import planesRoutes from '@routes/aircraft/Planes';
@@ -17,6 +18,7 @@ const Paths = [
   'roles',
   'years',
   'nations',
+  'nationYear',
   'costs',
   'stats',
   'specialAbilities',
@@ -34,6 +36,7 @@ export const apiPaths: Record<ApiPaths, string> = {
   roles: `${rootPath}roles`,
   years: `${rootPath}years`,
   nations: `${rootPath}nations`,
+  nationYear: `${rootPath}nationYear`,
   costs: `${rootPath}costs`,
   stats: `${rootPath}stats`,
   specialAbilities: `${rootPath}specialAbilities`,
@@ -48,6 +51,7 @@ export const setRoutes = (app: Application) => {
   app.use(apiPaths.roles, rolesRoutes);
   app.use(apiPaths.years, yearsRoutes);
   app.use(apiPaths.nations, nationsRoutes);
+  app.use(apiPaths.nationYear, nationYearsRoutes);
   app.use(apiPaths.costs, costsRoutes);
   app.use(apiPaths.stats, statsRoutes);
   app.use(apiPaths.specialAbilities, specialAbilitiesRoutes);

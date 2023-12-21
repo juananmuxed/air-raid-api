@@ -4,30 +4,28 @@ import {
 } from 'sequelize';
 
 import { SpecialAbilities, SpecialAbilityModel } from './SpecialAbilities';
-import { YearModel, Years } from './Years';
 import { db } from '@db/Connection';
-import { Nations } from './Nations';
 import { Costs } from './Costs';
 import { AircraftClasses } from './AircraftClasses';
 import { Stats } from './Stats';
+import { NationYearModel, NationYears } from './NationYears';
 
 export interface PlaneItem extends Record<string, unknown> {
   id: number;
   designation: string;
   nickname: string;
-  nationId: number;
   costId: number;
   aircraftClassId: number;
   statZeroId: number;
   statOneId: number;
   statTwoId: number;
   statThreeId: number;
-  years?: number[];
   specialAbilities?: number[];
   specialAbilitiesVeteran?: number[];
-  setYears: HasManySetAssociationsMixin<YearModel, number>;
+  nationYears?: number[];
   setSpecialAbilities: HasManySetAssociationsMixin<SpecialAbilityModel, number>;
   setSpecialAbilitiesVeteran: HasManySetAssociationsMixin<SpecialAbilityModel, number>;
+  setNationYears: HasManySetAssociationsMixin<NationYearModel, number>;
 }
 
 export interface PlaneModel extends Model<InferAttributes<PlaneModel>, InferCreationAttributes<PlaneModel>>, PlaneItem {}
@@ -47,9 +45,6 @@ export const Planes = db.define<PlaneModel>(
     nickname: {
       type: DataTypes.STRING(40),
       unique: true,
-    },
-    nationId: {
-      type: DataTypes.INTEGER,
     },
     costId: {
       type: DataTypes.INTEGER,
@@ -72,30 +67,6 @@ export const Planes = db.define<PlaneModel>(
   },
   { underscored: true, timestamps: false },
 );
-
-export const PlanesYears = db.define(
-  'planes_years',
-  {
-    planeId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: Planes,
-        key: 'id',
-      },
-    },
-    yearId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: Years,
-        key: 'id',
-      },
-    },
-  },
-  { underscored: true, timestamps: false },
-);
-
-Planes.belongsToMany(Years, { through: PlanesYears, as: 'years' });
-Years.belongsToMany(Planes, { through: PlanesYears, as: 'planes' });
 
 export const PlanesSpecialAbilities = db.define(
   'planes_sp_abilities',
@@ -145,7 +116,30 @@ export const PlanesSpecialAbilitiesVeteran = db.define(
 Planes.belongsToMany(SpecialAbilities, { through: PlanesSpecialAbilitiesVeteran, as: 'specialAbilitiesVeteran', otherKey: 'specialAbilityId' });
 SpecialAbilities.belongsToMany(Planes, { through: PlanesSpecialAbilitiesVeteran, as: 'planesVeteran' });
 
-Planes.belongsTo(Nations, { foreignKey: 'nationId', as: 'nation' });
+export const PlanesNationYears = db.define(
+  'planes_nation_years',
+  {
+    planeId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: Planes,
+        key: 'id',
+      },
+    },
+    nationYearId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: NationYears,
+        key: 'id',
+      },
+    },
+  },
+  { underscored: true, timestamps: false },
+);
+
+Planes.belongsToMany(NationYears, { through: PlanesNationYears, as: 'nationYears' });
+NationYears.belongsToMany(Planes, { through: PlanesNationYears, as: 'planesNation' });
+
 Planes.belongsTo(Costs, { foreignKey: 'costId', as: 'cost' });
 Planes.belongsTo(AircraftClasses, { foreignKey: 'aircraftClassId', as: 'class' });
 Planes.belongsTo(Stats, { foreignKey: 'statZeroId', as: 'statZero' });

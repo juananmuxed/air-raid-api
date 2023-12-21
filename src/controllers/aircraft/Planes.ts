@@ -99,7 +99,6 @@ export class PlanesController {
 
       res.json(planes);
     } catch (error) {
-      console.log(error);
       next(new InternalError(undefined, error as ValidationError));
     }
   };

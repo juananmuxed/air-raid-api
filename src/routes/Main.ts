@@ -18,7 +18,7 @@ const Paths = [
   'roles',
   'years',
   'nations',
-  'nationYear',
+  'nationYears',
   'costs',
   'stats',
   'specialAbilities',
@@ -36,7 +36,7 @@ export const apiPaths: Record<ApiPaths, string> = {
   roles: `${rootPath}roles`,
   years: `${rootPath}years`,
   nations: `${rootPath}nations`,
-  nationYear: `${rootPath}nationYear`,
+  nationYears: `${rootPath}nationYears`,
   costs: `${rootPath}costs`,
   stats: `${rootPath}stats`,
   specialAbilities: `${rootPath}specialAbilities`,
@@ -51,7 +51,7 @@ export const setRoutes = (app: Application) => {
   app.use(apiPaths.roles, rolesRoutes);
   app.use(apiPaths.years, yearsRoutes);
   app.use(apiPaths.nations, nationsRoutes);
-  app.use(apiPaths.nationYear, nationYearsRoutes);
+  app.use(apiPaths.nationYears, nationYearsRoutes);
   app.use(apiPaths.costs, costsRoutes);
   app.use(apiPaths.stats, statsRoutes);
   app.use(apiPaths.specialAbilities, specialAbilitiesRoutes);

@@ -3,13 +3,13 @@ import {
 } from 'sequelize';
 
 import { db } from '@db/Connection';
-import { YearModel, Years } from './Years';
+import { YearItem, YearModel, Years } from './Years';
 import { Nations } from './Nations';
 
 export interface NationYearItem extends Record<string, unknown> {
   id: number;
   nationId: number;
-  years?: number[];
+  years?: number[] | YearItem[];
   setYears: HasManySetAssociationsMixin<YearModel, number>;
 }
 

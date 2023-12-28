@@ -10,7 +10,8 @@ import { getOrder, getPagination, pagedResponse } from '@controllers/utils/Pagin
 import { MIME_TYPES } from '@config/data/MimeTypes';
 import { ERRORS } from '@config/data/Errors';
 import { convertCsv } from '@controllers/utils/ConvertCsv';
-import { Years } from '@db/models/Years';
+import { YearItem, Years } from '@db/models/Years';
+import { getUnique } from '@controllers/utils/Arrays';
 
 const include = [
   {
@@ -36,7 +37,7 @@ export class NationYearsController {
   }
 
   private async setIncludes(item: NationYearItem, nationYear?: NationYearModel) {
-    if (item.years) await nationYear?.setYears(item.years);
+    if (item.years) await nationYear?.setYears(item.years as number[]);
   }
 
   getNationYears = async (_req: Request, res: Response, next: NextFunction) => {
@@ -46,6 +47,25 @@ export class NationYearsController {
       });
 
       res.json(nationYears);
+    } catch (error) {
+      next(new InternalError(undefined, error as ValidationError));
+    }
+  };
+
+  getNationYearsByNation = async (req: Request, res: Response, next: NextFunction) => {
+    const { params } = req;
+
+    try {
+      const nationYears = await NationYears.findAll({
+        where: {
+          nationId: params.nationId,
+        },
+        include,
+      });
+
+      const uniqueYears = getUnique(nationYears.map((nationYear) => nationYear.years).flat(1) as YearItem[]);
+
+      res.json(uniqueYears);
     } catch (error) {
       next(new InternalError(undefined, error as ValidationError));
     }

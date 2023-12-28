@@ -11,12 +11,14 @@ const auth = new AuthenticationController();
 
 router.route('/')
   .get([auth.authJWT, auth.checkRole(['editor', 'admin'])], nationYears.getNationYears)
-  .post([auth.authJWT, auth.checkRole(['editor', 'admin'])], nationYears.createNationYear)
+  .post(nationYears.createNationYear)
   .put([auth.authJWT, auth.checkRole(['editor', 'admin'])], nationYears.updateNationYear)
   .delete([auth.authJWT, auth.checkRole(['editor', 'admin'])], nationYears.deleteNationYear);
 
 router.get('/admin', [auth.authJWT, auth.checkRole(['editor', 'admin'])], nationYears.getNationYearsPaginated);
 
 router.post('/bulk', [auth.authJWT, auth.checkRole(['editor', 'admin']), uploader.single('file')], nationYears.bulkCreateNationYears);
+
+router.get('/nation/:nationId', nationYears.getNationYearsByNation);
 
 export default router;

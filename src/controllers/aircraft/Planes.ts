@@ -15,6 +15,8 @@ import { MIME_TYPES } from '@config/data/MimeTypes';
 import { ERRORS } from '@config/data/Errors';
 import { convertCsv } from '@controllers/utils/ConvertCsv';
 import { NationYears } from '@db/models/NationYears';
+import { Years } from '@db/models/Years';
+import { includeNationYears } from '@controllers/manufacturers/NationYears';
 
 const include = [
   {
@@ -70,6 +72,7 @@ const include = [
     through: {
       attributes: [],
     },
+    include: includeNationYears,
   },
 ];
 
@@ -83,6 +86,7 @@ export class PlanesController {
   private async setIncludes(item: PlaneItem, plane?: PlaneModel) {
     if (item.specialAbilities) await plane?.setSpecialAbilities(item.specialAbilities);
     if (item.specialAbilitiesVeteran) await plane?.setSpecialAbilitiesVeteran(item.specialAbilitiesVeteran);
+    if (item.nationYears) await plane?.setNationYears(item.nationYears);
   }
 
   getPlanes = async (_req: Request, res: Response, next: NextFunction) => {
@@ -93,7 +97,60 @@ export class PlanesController {
 
       res.json(planes);
     } catch (error) {
-      console.log(error);
+      next(new InternalError(undefined, error as ValidationError));
+    }
+  };
+
+  getPlanesByNationAndYear = async (req: Request, res: Response, next: NextFunction) => {
+    const { params } = req;
+
+    try {
+      const nation = await Nations.findByPk(params.nationId);
+
+      if (!nation) next(new NotFoundError(ERRORS.NOT_FOUND('Nation')));
+
+      const year = await Years.findByPk(params.yearId);
+
+      if (!year) next(new NotFoundError(ERRORS.NOT_FOUND('Year')));
+
+      const includeWithWhere = [
+        ...includeNationYears,
+        {
+          model: Years,
+          as: 'years',
+          required: true,
+          where: {
+            id: params.yearId,
+          },
+        },
+      ];
+
+      const nationYears = await NationYears.findAll({
+        where: {
+          nationId: params.nationId,
+        },
+        include: includeWithWhere,
+      });
+
+      const filteredNationYears = nationYears
+        .map((nationYear) => nationYear.id);
+
+      const planes = await Planes.findAll({
+        include: [
+          ...include,
+          ...[{
+            model: NationYears,
+            as: 'nationYears',
+            required: true,
+            where: {
+              id: filteredNationYears,
+            },
+          }],
+        ],
+      });
+
+      res.json(planes);
+    } catch (error) {
       next(new InternalError(undefined, error as ValidationError));
     }
   };

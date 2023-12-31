@@ -14,7 +14,6 @@ export const useErrorHandler = (err: Error, _req: Request, res: Response, next: 
       });
     }
 
-    // console.log(err);
     return res.status(err.status).json({
       status: 'error',
       message: 'Something went wrong',

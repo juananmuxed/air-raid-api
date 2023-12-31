@@ -56,6 +56,10 @@ export class NationYearsController {
     const { params } = req;
 
     try {
+      const nation = await Nations.findByPk(params.nationId);
+
+      if (!nation) next(new NotFoundError(ERRORS.NOT_FOUND('Nation')));
+
       const nationYears = await NationYears.findAll({
         where: {
           nationId: params.nationId,

@@ -11,7 +11,7 @@ import { MIME_TYPES } from '@config/data/MimeTypes';
 import { ERRORS } from '@config/data/Errors';
 import { convertCsv } from '@controllers/utils/ConvertCsv';
 import { YearItem, Years } from '@db/models/Years';
-import { getUnique } from '@controllers/utils/Arrays';
+import { getUnique, sortByKey } from '@controllers/utils/Arrays';
 
 const include = [
   {
@@ -69,7 +69,7 @@ export class NationYearsController {
 
       const uniqueYears = getUnique(nationYears.map((nationYear) => nationYear.years).flat(1) as YearItem[]);
 
-      res.json(uniqueYears);
+      res.json(sortByKey(uniqueYears, 'year'));
     } catch (error) {
       next(new InternalError(undefined, error as ValidationError));
     }

@@ -23,7 +23,6 @@ export const SpecialAbilities = db.define<SpecialAbilityModel>(
     },
     name: {
       type: DataTypes.STRING(20),
-      unique: true,
     },
     valueNumber: {
       type: DataTypes.INTEGER({ length: 2 }),

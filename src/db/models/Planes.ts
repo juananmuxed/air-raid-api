@@ -44,7 +44,6 @@ export const Planes = db.define<PlaneModel>(
     },
     nickname: {
       type: DataTypes.STRING(40),
-      unique: true,
     },
     costId: {
       type: DataTypes.INTEGER,

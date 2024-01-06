@@ -63,6 +63,9 @@ export const Planes = db.define<PlaneModel>(
     statThreeId: {
       type: DataTypes.INTEGER,
     },
+    beta: {
+      type: DataTypes.BOOLEAN,
+    },
   },
   { underscored: true, timestamps: false },
 );

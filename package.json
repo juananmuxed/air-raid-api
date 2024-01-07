@@ -9,7 +9,7 @@
     "build": "tsc",
     "docker:stop": "docker stop air-raid-container || true",
     "docker:build": "docker build . -t air-raid:latest",
-    "docker:clear": "docker rm air-raid-container",
+    "docker:clear": "docker rm air-raid-container || true",
     "docker:run": "docker run -d --restart always -p 3000:3000 --env-file .env.production --name air-raid-container --add-host host.docker.internal:host-gateway air-raid",
     "docker:prune": "yes | docker system prune -a",
     "docker:deploy": "npm run docker:stop && npm run docker:build && npm run docker:clear && npm run docker:run && npm run docker:prune",

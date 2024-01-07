@@ -1,6 +1,6 @@
 {
   "name": "air-raid-api",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "description": "API REST for Air Raid board game",
   "main": "index.js",
   "scripts": {

@@ -41,6 +41,7 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
     "mariadb": "^3.2.2",
+    "module-alias": "^2.2.3",
     "multer": "^1.4.5-lts.1",
     "mysql2": "^3.6.5",
     "sequelize": "^6.35.2",
@@ -66,5 +67,15 @@
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.3.3"
+  },
+  "_moduleAliases": {
+    "@config": "dist/config",
+    "@controllers": "dist/controllers",
+    "@db": "dist/db",
+    "@docs": "dist/docs",
+    "@middlewares": "dist/middlewares",
+    "@models": "dist/models",
+    "@routes": "dist/routes",
+    "@server": "dist/server"
   }
 }

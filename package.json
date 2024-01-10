@@ -4,9 +4,9 @@
   "description": "API REST for Air Raid board game",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon - exec 'ts-node' src/index.ts",
+    "dev": "ts-node-dev -r tsconfig-paths/register src/index.ts",
     "lint": "eslint . - ext .ts",
-    "build": "tsc",
+    "build": "tsc && tsc-alias",
     "docker:stop": "docker stop air-raid-container || true",
     "docker:build": "docker build . -t air-raid:latest",
     "docker:clear": "docker rm air-raid-container || true",
@@ -63,19 +63,10 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
-    "nodemon": "^3.0.2",
     "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "tsc-alias": "^1.8.8",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.3.3"
-  },
-  "_moduleAliases": {
-    "@config": "dist/config",
-    "@controllers": "dist/controllers",
-    "@db": "dist/db",
-    "@docs": "dist/docs",
-    "@middlewares": "dist/middlewares",
-    "@models": "dist/models",
-    "@routes": "dist/routes",
-    "@server": "dist/server"
   }
 }

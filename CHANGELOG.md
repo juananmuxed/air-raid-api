@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.0.7]
+
+### Add
+- Deploy action
+
 ## [v1.0.6]
 
 ### Add
@@ -18,5 +23,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Special abilities
   - Aircraft classes
 
-[Unreleased]: https://github.com/juananmuxed/air-raid-api/compare/v1.0.6...HEAD
+[Unreleased]: https://github.com/juananmuxed/air-raid-api/compare/v1.0.7...HEAD
+[v1.0.7]: https://github.com/juananmuxed/air-raid-api/releases/tag/v1.0.7
 [v1.0.6]: https://github.com/juananmuxed/air-raid-api/releases/tag/v1.0.6

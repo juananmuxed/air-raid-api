@@ -75,11 +75,11 @@ module.exports = {
 
     // allow debugger during development only
     '@typescript-eslint/no-unused-vars': [
-      process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+      process.env.ENVIRONMENT === 'production' ? 'error' : 'warn',
       { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
     ],
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+    'no-debugger': process.env.ENVIRONMENT === 'production' ? 'error' : 'warn',
+    'no-console': process.env.ENVIRONMENT === 'production' ? 'error' : 'warn',
 
     'import/order': ['error', {
       pathGroups: [

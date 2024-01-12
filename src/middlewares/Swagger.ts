@@ -23,7 +23,7 @@ export const useSwaggerOptions = () => {
     },
     apis: ['src/docs/**/*.yml'],
   };
-  if (process.env.NODE_ENV === 'production' && swaggerOptions.definition) {
+  if (process.env.ENVIRONMENT === 'production' && swaggerOptions.definition) {
     swaggerOptions.definition.servers = [{
       url: 'https://airraidapi.muxed.dev/api',
       description: 'Air Raid board game API',

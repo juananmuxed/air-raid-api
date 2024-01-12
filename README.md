@@ -14,6 +14,9 @@
 
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/juananmuxed/air-raid-api/deploy.yml?label=Workflow)
 
+## Deploy web status
+[![Website](https://img.shields.io/website?down_color=red&down_message=Offline&label=Website&up_color=green&up_message=Online&url=https://airraidapi.muxed.dev/api/docs)](https://airraidapi.muxed.dev/api/docs)
+
 ## 🎱 Introduction
 
 > *Fight on and fly on to the last drop of blood and the last drop of fuel, to the last beat of the heart.* <br> - Manfred von Richthofen, The Red Baron

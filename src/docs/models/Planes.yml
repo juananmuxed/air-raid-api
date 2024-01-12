@@ -46,6 +46,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/NationYears'
+        beta:
+          type: boolean
     PagedPlanes:
       type: object
       properties:

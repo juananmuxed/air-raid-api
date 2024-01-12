@@ -188,3 +188,32 @@ paths:
               application/json:
                 schema:
                   $ref: '#/components/schemas/Error'
+  /nationYears/nation/{nationId}:
+    get:
+        tags:
+          - NationYears
+        summary: Get the years by nation id
+        description: Get the years by nation id
+        parameters:
+          - name: nationId
+            in: path
+            description: Nation ID
+            required: true
+            schema:
+              type: integer
+              format: int64
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Years'
+          '400':
+            description: An error has ocurred
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'

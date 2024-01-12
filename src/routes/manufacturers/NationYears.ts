@@ -19,7 +19,6 @@ router.get('/admin', [auth.authJWT, auth.checkRole(['editor', 'admin'])], nation
 
 router.post('/bulk', [auth.authJWT, auth.checkRole(['editor', 'admin']), uploader.single('file')], nationYears.bulkCreateNationYears);
 
-// TODO: doc swagger
 router.get('/nation/:nationId', nationYears.getNationYearsByNation);
 
 export default router;

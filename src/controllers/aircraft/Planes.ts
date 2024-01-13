@@ -108,28 +108,33 @@ export class PlanesController {
       const nation = await Nations.findByPk(params.nationId);
 
       if (!nation) next(new NotFoundError(ERRORS.NOT_FOUND('Nation')));
+      let _include;
 
-      const year = await Years.findByPk(params.yearId);
+      if (Number(params.yearId) > 0) {
+        const year = await Years.findByPk(params.yearId);
 
-      if (!year) next(new NotFoundError(ERRORS.NOT_FOUND('Year')));
+        if (!year) next(new NotFoundError(ERRORS.NOT_FOUND('Year')));
 
-      const includeWithWhere = [
-        ...includeNationYears,
-        {
-          model: Years,
-          as: 'years',
-          required: true,
-          where: {
-            id: params.yearId,
+        _include = [
+          ...includeNationYears,
+          {
+            model: Years,
+            as: 'years',
+            required: true,
+            where: {
+              id: params.yearId,
+            },
           },
-        },
-      ];
+        ];
+      } else {
+        _include = includeNationYears;
+      }
 
       const nationYears = await NationYears.findAll({
         where: {
           nationId: params.nationId,
         },
-        include: includeWithWhere,
+        include: _include,
       });
 
       const filteredNationYears = nationYears
